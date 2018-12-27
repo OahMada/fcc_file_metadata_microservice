@@ -21,3 +21,10 @@ app.get('/hello', function(req, res){
 app.listen(process.env.PORT || 3000, function () {
   console.log('Node.js listening ...');
 });
+
+app.post('/api/fileanalyse', upload.single('upfile'), function(req, res){
+  res.json({filename: req.file.originalname,
+            type: req.file.mimetype,
+            size: req.file.size + 'B'
+           });
+});
